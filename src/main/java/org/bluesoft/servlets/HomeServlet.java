@@ -32,7 +32,7 @@ public class HomeServlet extends HttpServlet {
         req.setAttribute("menuItems",menuItems);
 
         ServletContext ctx = getServletContext();
-        RequestDispatcher dispatcher = ctx.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = ctx.getRequestDispatcher("/menu.jsp");
         dispatcher.forward(req,resp);
 
 

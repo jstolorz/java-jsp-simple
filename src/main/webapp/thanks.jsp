@@ -5,6 +5,8 @@
   Time: 12:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,9 +14,11 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<% Double total = (Double) request.getAttribute("total"); %>
 <h2>Order your food</h2>
-<p>Thank you - your order has been received. You need to pay $ <%=total%> </p>
+Thank you - your order has been received. You need to pay
+ <fmt:formatNumber value="${total}" type="currency" currencyCode="${currency}"/>
+
 <jsp:include page="footer.jsp"/>
+
 </body>
 </html>

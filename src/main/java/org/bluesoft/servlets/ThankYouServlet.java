@@ -28,6 +28,7 @@ public class ThankYouServlet extends HttpServlet {
         }
 
         req.setAttribute("total",total);
+        req.setAttribute("currency","USD");
 
         ServletContext ctx = getServletContext();
         RequestDispatcher dispatcher = ctx.getRequestDispatcher("/thanks.jsp");
