@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.bluesoft'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/javax/javaee-api
+    //compile group: 'javax', name: 'javaee-api', version: '8.0'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.0.28'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-logging-juli
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '8.0.28'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.28'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper
+    compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '8.0.28'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper-el
+    compile group: 'org.apache.tomcat', name: 'tomcat-jasper-el', version: '8.0.28'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
+    compile group: 'org.apache.tomcat', name: 'tomcat-jsp-api', version: '8.0.28'
+
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
