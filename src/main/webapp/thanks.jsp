@@ -11,12 +11,36 @@
 <html>
 <head>
     <title>Thanks</title>
+    <script>
+        function updateStatus() {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if(this.readyState == 4){
+                    document.getElementById("status").innerText = this.responseText;
+                }
+            };
+            request.open("GET","/updateStatus?id=${id}",true);
+            request.send();
+        }
+
+
+        window.setInterval(
+            function () {
+                updateStatus();
+            }
+            ,2000);
+    </script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <h2>Order your food</h2>
-Thank you - your order has been received. You need to pay
- <fmt:formatNumber value="${total}" type="currency" currencyCode="${currency}"/>
+<p>Thank you - your order has been received. You need to pay</p>
+
+<fmt:formatNumber value="${total}" type="currency" currencyCode="${currency}"/>
+
+<p>The current status of your order is: <span id="status">${status}</span>
+  <input type="button" value="refresh status" onclick="updateStatus()"/>
+</p>
 
 <jsp:include page="footer.jsp"/>
 

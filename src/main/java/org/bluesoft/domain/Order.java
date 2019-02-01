@@ -65,6 +65,10 @@ public class Order {
         this.customer = customer;
     }
 
+    public void setContents(Map<MenuItem,Integer> contents){
+        this.currentOrder = contents;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

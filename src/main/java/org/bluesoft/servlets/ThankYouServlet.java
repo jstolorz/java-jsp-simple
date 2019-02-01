@@ -1,5 +1,8 @@
 package org.bluesoft.servlets;
 
+import org.bluesoft.data.MenuDao;
+import org.bluesoft.data.MenuDaoFactory;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,15 +23,23 @@ public class ThankYouServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        Double total = (Double) session.getAttribute("total");
+        Long orderId = (Long)session.getAttribute("orderId");
+
+        MenuDao dao = MenuDaoFactory.getMenuDao();
+
+        Double total = dao.getOrderTotal(orderId);
 
         if(total == null){
             resp.sendRedirect("/order.html");
             return;
         }
 
+        String status = dao.getOrder(orderId).getStatus();
+
         req.setAttribute("total",total);
+        req.setAttribute("status",status);
         req.setAttribute("currency","USD");
+        req.setAttribute("id",orderId);
 
         ServletContext ctx = getServletContext();
         RequestDispatcher dispatcher = ctx.getRequestDispatcher("/thanks.jsp");
