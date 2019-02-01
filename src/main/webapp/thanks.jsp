@@ -16,7 +16,9 @@
             var request = new XMLHttpRequest();
             request.onreadystatechange = function () {
                 if(this.readyState == 4){
-                    document.getElementById("status").innerText = this.responseText;
+                    var json = JSON.parse(this.responseText);
+                    document.getElementById("status").innerText = json.status;
+                    document.getElementById("time").innerText = 'Last updated:  ' + json.time;
                 }
             };
             request.open("GET","/updateStatus?id=${id}",true);
@@ -41,6 +43,7 @@
 <p>The current status of your order is: <span id="status">${status}</span>
   <input type="button" value="refresh status" onclick="updateStatus()"/>
 </p>
+<p id="time"></p>
 
 <jsp:include page="footer.jsp"/>
 
