@@ -35,6 +35,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
     compile group: 'org.apache.tomcat', name: 'tomcat-jsp-api', version: '8.0.28'
 
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-websocket
+    compile group: 'org.apache.tomcat', name: 'tomcat-websocket', version: '8.0.28'
+
+
     // https://mvnrepository.com/artifact/javax.servlet/jstl
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     
@@ -44,6 +48,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20180813'
+    
 
 
 

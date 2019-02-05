@@ -2,10 +2,11 @@ package org.bluesoft.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Order {
 
-    private long id;
+    private Long id;
     private Map<MenuItem, Integer> currentOrder = new HashMap<>();
     private String status;
     private String customer;
@@ -33,11 +34,11 @@ public class Order {
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,6 +68,19 @@ public class Order {
 
     public void setContents(Map<MenuItem,Integer> contents){
         this.currentOrder = contents;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return getId() == order.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override

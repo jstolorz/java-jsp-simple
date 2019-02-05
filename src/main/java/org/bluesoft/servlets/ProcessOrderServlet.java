@@ -3,6 +3,8 @@ package org.bluesoft.servlets;
 import org.bluesoft.data.MenuDao;
 import org.bluesoft.data.MenuDaoFactory;
 import org.bluesoft.domain.Order;
+import org.bluesoft.websockets.KitchenDisplaySessionHandler;
+import org.bluesoft.websockets.KitchenDisplaySessionHandlerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -47,6 +49,11 @@ public class ProcessOrderServlet extends HttpServlet {
         String status = req.getParameter("status");
         System.out.println(id + " " + status);
         dao.updateOrderStatus(id,status);
+
+        Order order = dao.getOrder(id);
+        KitchenDisplaySessionHandler handler = KitchenDisplaySessionHandlerFactory.getHandler();
+        handler.amendOrder(order);
+
         doGet(req,resp);
     }
 }

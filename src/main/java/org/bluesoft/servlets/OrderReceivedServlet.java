@@ -4,6 +4,8 @@ import org.bluesoft.data.MenuDao;
 import org.bluesoft.data.MenuDaoFactory;
 import org.bluesoft.data.MenuDataService;
 import org.bluesoft.domain.Order;
+import org.bluesoft.websockets.KitchenDisplaySessionHandler;
+import org.bluesoft.websockets.KitchenDisplaySessionHandlerFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,7 +44,10 @@ public class OrderReceivedServlet extends HttpServlet {
 			}
 		}
 
-		System.out.println("A new order has received");
+
+		KitchenDisplaySessionHandler handler = KitchenDisplaySessionHandlerFactory.getHandler();
+	    handler.newOrder(order);
+
 
 		HttpSession session = request.getSession();
 		session.setAttribute("orderId",order.getId());
